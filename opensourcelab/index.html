@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<!-- Created with Ai->Canvas Export Plug-In Version 1.4 (Mac)   -->
+<!-- By Mike Swanson (http://blog.mikeswanson.com/)             -->
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>opensourcelab</title>
+  <link href="https://fonts.googleapis.com/css?family=Archivo:400,500,600,700&display=swap" rel="stylesheet">
+  <script src="p5.min.js"></script>
+  <script>
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('clock').innerHTML =
+        h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i
+      }; // 숫자가 10보다 작을 경우 앞에 0을 붙여줌
+      return i;
+    }
+  </script>
+  <style>
+    * {
+      margin: 0 auto;
+      padding: 0 auto;
+    }
+
+    canvas {
+      /* border: 1px solid black;*/
+      position: absolute;
+      top: 0px;
+      z-index: -1;
+    }
+
+    body {
+      background-color: white;
+      font-family: 'Archivo', sans-serif;
+
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #clock {
+      position: absolute;
+      font-weight: 600;
+      font-size: 7vw;
+      writing-mode: vertical-lr;
+      margin-left: -50px;
+      right: 10px;
+      top: 20px;
+
+    }
+
+    h1 {
+      position: absolute;
+      font-weight: 600;
+      font-size: 6.5vw;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      margin-left: 0;
+      top: 20px;
+      left: 10px;
+    }
+    h1>a:hover{
+      color: white;
+    }
+    
+    img{
+      position: absolute;
+      right:10px;
+      bottom: 10px;;
+    }
+    .insta{
+      position: absolute;
+      bottom: 10px;
+      left:10px;
+      font-weight: bold;
+    }
+    .insta>a:hover{
+      color: white;
+    }
+  </style>
+</head>
+
+<body onload="startTime()">
+  <h1 class="head">
+    <a href="index.html">
+      Open Source Lap
+    </a>
+  </h1>
+  <div id="clock">
+  </div>
+  <script type="text/javascript">
+    let s = 0.5;
+    let x1, y1;
+    let x2, y2;
+    let x3, y3;
+    let max;
+var pix =30;
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      x1 = random(128, width - 128);
+      x2 = random(128, width - 128);
+      x3 = random(128, width - 128);
+      y1 = random(128, width - 128);
+      y2 = random(128, width - 128);
+      y3 = random(128, width - 128);
+      max = dist(0, 0, width, height);
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight);
+    }
+
+    function draw() {
+      background(0);
+        object1(x1, y1, s);
+        object2(x2, y2, s);
+        object3(x3, y3, s);
+      for (var x = -pix; x < width+pix; x += pix) {
+        for (var y = -pix; y < height+pix; y += pix) {
+          var size = dist(mouseX, mouseY, x, y);
+          size=size/max*120;
+          noStroke();
+          ellipse(x, y, size, size);
+         
+        }
+      }
+
+      // noStroke();
+      // fill(255, 10);
+      // rect(0, 0, width, height);
+      // stroke(10);
+      // line(width / 2, 0, width / 2, height);
+      // line(0, height / 2, width, height / 2);
+
+     
+
+    }
+    // class object1{
+    //   constructor(x,y,s){
+    //     this.x = x;
+    //     this.y = y;
+    //     this.s = s;
+    //     this.draw
+    //   }
+
+    // }
+
+    function object1(x, y, s) {
+      push();
+      translate(x - 128 * s, y - 128 * s);
+      //center => fit to scale (128 * s(scale))
+      scale(s);
+      //control shape scale
+      beginShape();
+      // 1// /
+      vertex(127.6, 259.6);
+      bezierVertex(57.3, 259.6, 0.0, 202.3, 0.0, 131.9);
+      bezierVertex(0.0, 61.5, 57.3, 4.3, 127.6, 4.3);
+      bezierVertex(198.0, 4.3, 255.3, 61.5, 255.3, 131.9);
+      bezierVertex(255.3, 202.3, 198.0, 259.6, 127.6, 259.6);
+      // 1// /
+      beginContour();
+      vertex(127.6, 18.3);
+      bezierVertex(65.0, 18.3, 14.0, 69.3, 14.0, 131.9);
+      bezierVertex(14.0, 194.6, 65.0, 245.6, 127.6, 245.6);
+      bezierVertex(190.3, 245.6, 241.3, 194.6, 241.3, 131.9);
+      bezierVertex(241.3, 69.3, 190.3, 18.3, 127.6, 18.3);
+      endContour();
+      endShape();
+      pop();
+    }
+
+    function object2(x, y, s) {
+      push();
+      translate(x - 393.5 * s, y - 128 * s);
+      //center => fit to scale (128 * s(scale))
+      scale(s);
+      //control shape scale
+      beginShape();
+      // 1// /
+      vertex(540.6, 254.7);
+      vertex(246.5, 254.7);
+      vertex(393.6, 0.0);
+      vertex(540.6, 254.7);
+      // 1// /
+      beginContour();
+      vertex(270.8, 240.7);
+      vertex(516.4, 240.7);
+      vertex(393.6, 28.0);
+      vertex(270.8, 240.7);
+      endContour();
+      endShape();
+      pop();
+    }
+
+    function object3(x, y, s) {
+      push();
+      translate(x - 681.5 * s, y - 128 * s);
+      //center => fit to scale (128 * s(scale))
+      scale(s);
+      //control shape scale
+      // 1/ 3rd Shape
+      beginShape();
+      // 1/// /
+      vertex(791.8, 254.0);
+      vertex(570.4, 254.0);
+      vertex(570.4, 184.3);
+      vertex(791.8, 184.3);
+      vertex(791.8, 254.0);
+      // 1/// /
+      beginContour();
+      vertex(584.4, 240.0);
+      vertex(777.8, 240.0);
+      vertex(777.8, 198.3);
+      vertex(584.4, 198.3);
+      vertex(584.4, 240.0);
+      endContour();
+      endShape();
+      // ------------------------------------------------------------
+      // 1/// 3rd Shape
+      beginShape();
+      // 1/// /
+      vertex(791.8, 166.0);
+      vertex(570.4, 166.0);
+      vertex(570.4, 96.3);
+      vertex(791.8, 96.3);
+      vertex(791.8, 166.0);
+      // 1/// /
+      beginContour();
+      vertex(584.4, 152.0);
+      vertex(777.8, 152.0);
+      vertex(777.8, 110.3);
+      vertex(584.4, 110.3);
+      vertex(584.4, 152.0);
+      endContour();
+      endShape();
+      // ------------------------------------------------------------
+      // 1// 3rd Shape
+      beginShape();
+      // 1/// /
+      vertex(791.8, 78.1);
+      vertex(570.4, 78.1);
+      vertex(570.4, 8.3);
+      vertex(791.8, 8.3);
+      vertex(791.8, 78.1);
+      // 1/// /
+      beginContour();
+      vertex(584.4, 64.1);
+      vertex(777.8, 64.1);
+      vertex(777.8, 22.3);
+      vertex(584.4, 22.3);
+      vertex(584.4, 64.1);
+      endContour();
+      endShape();
+      pop();
+    }
+  </script>
+    <img src="OSL_LOGO02.png" alt="logo" width="50px">
+    <div class="insta">
+    <a href="https://www.instagram.com/opensource_lab/">
+    @opensource_lab</a>
+    </div>
+  <!-- <canvas>
+  	</canvas>
+  <script src="canvas.js"></script> -->
+</body>
+
+</html>
