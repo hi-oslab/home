@@ -152,7 +152,7 @@
         //non ios 13 device
         // text("non ios 13 device", 100, 100);
         permissionGranted = true;
-        
+
       }
     }
 
@@ -178,8 +178,8 @@
         return;
       }
       background(0);
-      const dx = constrain(rotationY, -5, 5);
-      const dy = constrain(rotationX, -5, 5);
+      const dx = constrain(rotationY, -10, 10);
+      const dy = constrain(rotationX, -10, 10);
       cx += dx;
       cy += dy;
       cx = constrain(cx, 0, width);
