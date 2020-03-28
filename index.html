@@ -51,7 +51,7 @@
 
     a {
       text-decoration: none;
-      color: black;
+      color: white;
     }
 
     #clock {
@@ -109,64 +109,22 @@
   <div id="clock">
   </div>
   <script type="text/javascript">
-    let permissionGranted = false;
-    let cx, cy;
-
     let s = 0.5;
     let x1, y1;
     let x2, y2;
     let x3, y3;
-    let max;
-    var pix = 30;
+    var speed1 = 1;
+    var speed2 = 1;
+    var speed3 = 1;
 
     function setup() {
       createCanvas(windowWidth, windowHeight);
       x1 = random(128, width - 128);
       x2 = random(128, width - 128);
       x3 = random(128, width - 128);
-      y1 = random(128, width - 128);
-      y2 = random(128, width - 128);
-      y3 = random(128, width - 128);
-      max = dist(0, 0, width, height);
-      cx = width / 2;
-      cy = height / 2;
-      //DeviceOrientationEvent, DeviceMotionEvent
-      if (typeof (DeviceOrientationEvent) !== 'undefined' && typeof (DeviceOrientationEvent.requestPermission) ===
-        'function') {
-        //ios 13 device
-        DeviceOrientationEvent.requestPermission()
-          .catch(() => {
-            let button = createButton("버튼을 누른 후 센서를 허가해주십시오.");
-            button.style("font-size", "24px");
-            button.style("background-color", "black");
-            button.style("color", "white");
-            button.center();
-            button.mousePressed(requsetAccess);
-            throw error;
-          })
-          .then(() => {
-            // on any subsequent visits
-            permissionGranted = true;
-          })
-      } else {
-        //non ios 13 device
-        // text("non ios 13 device", 100, 100);
-        permissionGranted = true;
-
-      }
-    }
-
-    function requsetAccess() {
-      DeviceOrientationEvent.requestPermission()
-        .then(response => {
-          if (response == 'granted') {
-            permissionGranted = true;
-          } else {
-            permissionGranted = false;
-          }
-        })
-        .catch(console.error);
-      this.remove();
+      y1 = random(128, height / 2);
+      y2 = random(128, height / 2);
+      y3 = random(128, height / 2);
     }
 
     function windowResized() {
@@ -174,48 +132,36 @@
     }
 
     function draw() {
-      if (!permissionGranted) {
-        return;
-      }
+
       background(0);
-      const dx = constrain(rotationY, -10, 10);
-      const dy = constrain(rotationX, -10, 10);
-      cx += dx;
-      cy += dy;
-      cx = constrain(cx, 0, width);
-      cy = constrain(cy, 0, height);
+      noStroke();
       object1(x1, y1, s);
       object2(x2, y2, s);
       object3(x3, y3, s);
-      for (var x = -pix; x < width + pix; x += pix) {
-        for (var y = -pix; y < height + pix; y += pix) {
-          var size = dist(cx, cy, x, y);
-          size = size / max * 120;
-          noStroke();
-          ellipse(x, y, size, size);
+      // }
+      y1 += speed1;
+      y2 += speed2;
+      y3 += speed3;
+      speed1 += 1;
+      speed2 += 1;
+      speed3 += 1;
 
-        }
+      if (y1 > height) {
+        speed1 *= -1;
+        speed1 *= 0.95;
+
       }
-
-      // noStroke();
-      // fill(255, 10);
-      // rect(0, 0, width, height);
-      // stroke(10);
-      // line(width / 2, 0, width / 2, height);
-      // line(0, height / 2, width, height / 2);
-
+      if (y2 > height) {
+        speed2 *= -1;
+        speed2 *= 0.95;
+      }
+      if (y3 > height) {
+        speed3 *= -1;
+        speed3 *= 0.95;
+      }
 
 
     }
-    // class object1{
-    //   constructor(x,y,s){
-    //     this.x = x;
-    //     this.y = y;
-    //     this.s = s;
-    //     this.draw
-    //   }
-
-    // }
 
     function object1(x, y, s) {
       push();
