@@ -51,7 +51,7 @@
 
     a {
       text-decoration: none;
-      color: black;
+      color: white;
     }
 
     #clock {
@@ -75,22 +75,26 @@
       top: 20px;
       left: 10px;
     }
-    h1>a:hover{
+
+    h1>a:hover {
       color: white;
     }
-    
-    img{
+
+    img {
       position: absolute;
-      right:10px;
-      bottom: 10px;;
+      right: 10px;
+      bottom: 10px;
+      ;
     }
-    .insta{
+
+    .insta {
       position: absolute;
       bottom: 10px;
-      left:10px;
+      left: 10px;
       font-weight: bold;
     }
-    .insta>a:hover{
+
+    .insta>a:hover {
       color: white;
     }
   </style>
@@ -109,17 +113,18 @@
     let x1, y1;
     let x2, y2;
     let x3, y3;
-    let max;
-var pix =30;
+    var speed1 = 1;
+    var speed2 = 1;
+    var speed3 = 1;
+
     function setup() {
       createCanvas(windowWidth, windowHeight);
       x1 = random(128, width - 128);
       x2 = random(128, width - 128);
       x3 = random(128, width - 128);
-      y1 = random(128, width - 128);
-      y2 = random(128, width - 128);
-      y3 = random(128, width - 128);
-      max = dist(0, 0, width, height);
+      y1 = random(128, height / 2);
+      y2 = random(128, height / 2);
+      y3 = random(128, height / 2);
     }
 
     function windowResized() {
@@ -127,39 +132,36 @@ var pix =30;
     }
 
     function draw() {
+
       background(0);
-        object1(x1, y1, s);
-        object2(x2, y2, s);
-        object3(x3, y3, s);
-      for (var x = -pix; x < width+pix; x += pix) {
-        for (var y = -pix; y < height+pix; y += pix) {
-          var size = dist(mouseX, mouseY, x, y);
-          size=size/max*120;
-          noStroke();
-          ellipse(x, y, size, size);
-         
-        }
+      noStroke();
+      object1(x1, y1, s);
+      object2(x2, y2, s);
+      object3(x3, y3, s);
+      // }
+      y1 += speed1;
+      y2 += speed2;
+      y3 += speed3;
+      speed1 += 1;
+      speed2 += 1;
+      speed3 += 1;
+
+      if (y1 > height) {
+        speed1 *= -1;
+        speed1 *= 0.95;
+
+      }
+      if (y2 > height) {
+        speed2 *= -1;
+        speed2 *= 0.95;
+      }
+      if (y3 > height) {
+        speed3 *= -1;
+        speed3 *= 0.95;
       }
 
-      // noStroke();
-      // fill(255, 10);
-      // rect(0, 0, width, height);
-      // stroke(10);
-      // line(width / 2, 0, width / 2, height);
-      // line(0, height / 2, width, height / 2);
-
-     
 
     }
-    // class object1{
-    //   constructor(x,y,s){
-    //     this.x = x;
-    //     this.y = y;
-    //     this.s = s;
-    //     this.draw
-    //   }
-
-    // }
 
     function object1(x, y, s) {
       push();
@@ -271,11 +273,11 @@ var pix =30;
       pop();
     }
   </script>
-    <img src="OSL_LOGO02.png" alt="logo" width="50px">
-    <div class="insta">
+  <img src="OSL_LOGO02.png" alt="logo" width="50px">
+  <div class="insta">
     <a href="https://www.instagram.com/opensource_lab/">
-    @opensource_lab</a>
-    </div>
+      @opensource_lab</a>
+  </div>
   <!-- <canvas>
   	</canvas>
   <script src="canvas.js"></script> -->
