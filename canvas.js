@@ -2,7 +2,7 @@
     var logos2;
     var logos3;
 
-    let s = 0.5;
+    let s = 0.7;
     let x1, y1;
     let x2, y2;
     let x3, y3;
@@ -12,9 +12,9 @@
 
     function setup() {
       createCanvas(windowWidth, windowHeight);
-      logos1 = new logo1(random(70, width / 3), 100, s, 5);
+      logos1 = new logo1(random(100, width / 3), 100, s, 5);
       logos2 = new logo2(random(width / 3, width / 3 * 2), 100, s, 5);
-      logos3 = new logo3(random(width / 3 * 2, width - 70), 100, s, 5);
+      logos3 = new logo3(random(width / 3 * 2, width - 100), 100, s, 5);
       background(0);
 
     }
@@ -30,7 +30,7 @@
       noStroke();
       // }
       fill(255, 150);
-      let gravity = createVector(0, -0.9);
+      let gravity = createVector(0, -2);
       logos1.applyForce(gravity);
       logos1.update();
       logos1.display();
@@ -98,9 +98,9 @@
           this.vel.x *= -1;
           this.loc.x = 30;
         }
-        if (this.loc.y > height - 64) {
+        if (this.loc.y > height - 100) {
           this.vel.y *= -0.9;
-          this.loc.y = height - 64;
+          this.loc.y = height - 100;
         }
       }
       bounce() {
@@ -159,9 +159,9 @@
           this.vel.x *= -1;
           this.loc.x = 30;
         }
-        if (this.loc.y > height - 64) {
+        if (this.loc.y > height - 100) {
           this.vel.y *= -0.7;
-          this.loc.y = height - 64;
+          this.loc.y = height - 100;
         }
       }
       bounce() {
@@ -259,9 +259,9 @@
           this.vel.x *= -1;
           this.loc.x = 30;
         }
-        if (this.loc.y > height - 64) {
+        if (this.loc.y > height - 100) {
           this.vel.y *= -0.8;
-          this.loc.y = height - 64;
+          this.loc.y = height - 100;
         }
       }
       bounce() {
