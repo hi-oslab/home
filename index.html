@@ -6,109 +6,152 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>opensourcelab</title>
-  <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
-  <script src="p5.min.js"></script>
-  <script>
-    function startTime() {
-      var today = new Date();
-      var h = today.getHours();
-      var m = today.getMinutes();
-      var s = today.getSeconds();
-      m = checkTime(m);
-      s = checkTime(s);
-      document.getElementById('clock').innerHTML =
-        h + ":" + m + ":" + s;
-      var t = setTimeout(startTime, 500);
-    }
+	<meta charset="UTF-8" />
+	<title>opensourcelab</title>
+	<link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
+	<script src="p5.min.js"></script>
+	<script>
+		function startTime() {
+			var today = new Date();
+			var h = today.getHours();
+			var m = today.getMinutes();
+			var s = today.getSeconds();
+			m = checkTime(m);
+			s = checkTime(s);
+			document.getElementById('clock').innerHTML =
+				h + ":" + m + ":" + s;
+			var t = setTimeout(startTime, 500);
+		}
 
-    function checkTime(i) {
-      if (i < 10) {
-        i = "0" + i
-      }; // 숫자가 10보다 작을 경우 앞에 0을 붙여줌
-      return i;
-    }
-  </script>
-  <style>
-    * {
-      margin: 0 auto;
-      padding: 0 auto;
-    }
+		function checkTime(i) {
+			if (i < 10) {
+				i = "0" + i
+			}; // 숫자가 10보다 작을 경우 앞에 0을 붙여줌
+			return i;
+		}
+	</script>
+	<style>
+		@font-face {
+			font-family: 'Arita-buri-SemiBold';
+			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-buri-SemiBold.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
 
-    body {
-      background-color:black;
-      font-family: 'Jost';
-    }
+		* {
+			margin: 0 auto;
+			padding: 0 auto;
+		}
 
-    a {
-      text-decoration: none;
-      color: white;
-    }
+		body {
+			background-color: black;
+			font-family: 'Jost';
+		}
 
-    #clock {
-      position: absolute;
-      font-weight: 400;
-      font-size: 7vh;
-      writing-mode: vertical-lr;
-      margin-left: -50px;
-      right: 0px;
-      top: 20px;
-      color: white;
+		a {
+			text-decoration: none;
+			color: white;
+		}
 
-    }
+		#clock {
+			position: absolute;
+			font-weight: 400;
+			font-size: 7vh;
+			writing-mode: vertical-lr;
+			margin-left: -50px;
+			right: 0px;
+			top: 20px;
+			color: white;
 
-    h1 {
-      position: absolute;
-      font-weight: 500;
-      font-size: 7vh;
-      writing-mode: vertical-lr;
-      transform: rotate(180deg);
-      margin-left: 0;
-      top: 20px;
-      left: 0px;
-    }
+		}
 
-    h1>a:hover {
-      color: white;
-    }
+		h1 {
+			position: absolute;
+			font-weight: 500;
+			font-size: 7vh;
+			writing-mode: vertical-lr;
+			transform: rotate(180deg);
+			margin-left: 0;
+			top: 20px;
+			left: 0px;
+		}
 
-    img {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      ;
-    }
+		h1>a:hover {
+			color: white;
+		}
 
-    .insta {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-size:4vh ;
-      /* font-weight: bold; */
-    }
+		img {
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+			;
+		}
 
-    .insta>a:hover {
-      color: white;
-    }
-  </style>
+		.insta {
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 4vh;
+			/* font-weight: bold; */
+		}
+
+		.insta>a:hover {
+			color: white;
+		}
+
+		.event {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+
+			transform: translate(-50%, -50%);
+			display: block;
+			font-family: 'Arita-buri-SemiBold';
+
+		}
+
+		.event_hightext {
+			font-size: 4.5vh;
+			text-align: center;
+			animation: line 1.5s ease-out infinite alternate;
+
+		}
+
+		.event_lowtext {
+			font-size: 2.0vh;
+			text-align: center;
+/*			animation: line 1.0s ease-out infinite alternate;*/
+		}
+
+		.event:hover {}
+		@keyframes line {
+			from {
+				background-color: gray;
+			}
+
+			to {
+				background-color: black;
+			}
+		}
+	</style>
 </head>
 
 <body onload="startTime()">
-  <h1 class="head">
-    <a href="index.html">
-      Open Source Lap
-    </a>
-  </h1>
-  <div id="clock">
-  </div>
-  <img src="OSL_LOGO02.png" alt="logo" width="100px">
-  <div class="insta">
-    <a href="https://www.instagram.com/opensource_lab/">
-      Instagram</a>
-  </div>
-
-  <script src="canvas.js"></script>
-</body>
-
-</html>
+	<h1 class="head">
+		<a href="index.html">
+			Open Source Lap
+		</a>
+	</h1>
+	<div id="clock">
+	</div>
+	<img src="OSL_LOGO02.png" alt="logo" width="100px">
+	<div class="insta">
+		<a href="https://www.instagram.com/opensource_lab/">
+			Instagram</a>
+	</div>
+	<div class="event"><a href="https://latespring2020.com/home">
+			<p class="event_hightext">" 만춘 2020 "</p>
+			<p class="event_lowtext">온라인 전시 보러가기</p>
+		</a></div>
+	<script src="canvas.js"></script>
+</body></html>
