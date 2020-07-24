@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<!-- Created with Ai->Canvas Export Plug-In Version 1.4 (Mac)   -->
+<!-- By Mike Swanson (http://blog.mikeswanson.com/)             -->
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>opensourcelab</title>
+  <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
+  <script src="p5.min.js"></script>
+  <script>
+    function startTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('clock').innerHTML =
+        h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i
+      }; // 숫자가 10보다 작을 경우 앞에 0을 붙여줌
+      return i;
+    }
+  </script>
+  <style>
+    * {
+      margin: 0 auto;
+      padding: 0 auto;
+    }
+
+    body {
+      background-color:black;
+      font-family: 'Jost';
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    #clock {
+      position: absolute;
+      font-weight: 400;
+      font-size: 7vh;
+      writing-mode: vertical-lr;
+      margin-left: -50px;
+      right: 0px;
+      top: 20px;
+      color: white;
+
+    }
+
+    h1 {
+      position: absolute;
+      font-weight: 500;
+      font-size: 7vh;
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      margin-left: 0;
+      top: 20px;
+      left: 0px;
+    }
+
+    h1>a:hover {
+      color: white;
+    }
+
+    img {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      ;
+    }
+
+    .insta {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size:4vh ;
+      /* font-weight: bold; */
+    }
+
+    .insta>a:hover {
+      color: white;
+    }
+  </style>
+</head>
+
+<body onload="startTime()">
+  <h1 class="head">
+    <a href="index.html">
+      Open Source Lap
+    </a>
+  </h1>
+  <div id="clock">
+  </div>
+  <img src="OSL_LOGO02.png" alt="logo" width="100px">
+  <div class="insta">
+    <a href="https://www.instagram.com/opensource_lab/">
+      Instagram</a>
+  </div>
+
+  <script src="canvas.js"></script>
+</body>
+
+</html>
